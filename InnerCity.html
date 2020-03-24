@@ -1,0 +1,224 @@
+
+<h1 class="sheet-title" align="center">Inner City Character Sheet</h1>
+    <tr>
+       <td>Character Name:</td>
+       <td><input type="text" name="attr_name" /></td>
+    </tr>
+
+   
+<div class="sheet-3colrow">
+    <div class="sheet-col">
+        <!-- Content for the first column -->
+        <table>
+            <!--This table contains classes and experience -->
+             <tr class="sheet-headerrow">
+                <td>Profession</td>
+                <td>Rank</td>
+                <td>Experience</td>
+            </tr>
+            <tr>
+              <td>Crook</td>
+              <td><input type="number" value="1" min="1" max="20" name="attr_rank" /></td>
+              <td><input type="text" name="attr_xp" /></td>
+            </tr>
+        </table>
+     </div>
+
+    <div class="sheet-col">
+                <!-- Content for the second column -->
+        <table>
+            <!--This table contains the four basic Attributes (STR, DEX, LOG, WIL) with roll buttons for each-->
+            <tr>
+               <td>Defence Classification (DC):</td><td><input type="number" value="10" min="10" name="attr_dc" /></td>
+            </tr>
+            <tr>
+               <td>Curr Health:</td><td><input type="number" value="0" min="0" name="attr_bp" /></td>
+            </tr>
+            <tr>
+               <td>Max Heath:</td><td><input type="number" value="4" min="0" name="attr_maxbp" /></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="sheet-col">
+                <!-- Content for the third column -->
+        <table>
+            <!--This table contains the four basic Attributes (STR, DEX, LOG, WIL) with roll buttons for each-->
+            <tr>
+                <td>
+                    <button type="roll" name="roll_crimes" value="&{template:default} {{name=Crimes Save}} {{Target numbers=[[@{crimes}]] or x3=[[@{crimes}*3]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Crimes:
+                </td>
+                <td>
+                     <input type="number" name="attr_crimes" value="0" min="0" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_init" value="&{template:default} {{name=Initiative Roll}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Initiative:
+                </td>
+                <td>
+                    <input type="number" name="attr_init" value="0" min="0" />
+                </td>
+            </tr> 
+
+        </table>
+    </div>
+</div>
+<div class="sheet-2colrow">
+    <div class="sheet-col">
+                <!-- Content for the first column -->
+        <br /><br />
+        <table>
+            <!--This table contains all skills, the skill score is autocalculated and there is a rollbutton for each.  The roll is called %<skill> in-engine-->
+            <th><h3>Abilities</h3></th>
+            <tr class="sheet-headerrow">
+                <td>Ability Name</td>
+                <td>Score</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_lift" value="&{template:default} {{name=Lift Wallets Check}} {{Target = [[@{lift_score}]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Pick Pockets:
+                </td>
+                <td>
+                    <input type="number" name="attr_lift_score" value="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_alarms" value="&{template:default} {{name=Deactivate Alarm Check}} {{Target = [[@{alarms_score}]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Deactivate Alarms:
+                </td>
+                <td>
+                    <input type="number" name="attr_alarms_score" value="20"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_hide" value="&{template:default} {{name=Escape Notice Check}} {{Target = [[@{hide_score}]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Escape Notice:
+                </td>
+                <td>
+                    <input type="number" name="attr_hide_score" value="18"/>
+                </td>
+            </tr>
+ 
+            <tr>
+                <td>
+                    <button type="roll" name="roll_climb" value="&{template:default} {{name=Climb Check}} {{Target = [[@{climb_score}]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Climb:
+                </td>
+                <td>
+                    <input type="number"name="attr_climb_score" value="70"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_lock" value="&{template:default} {{name=Pick Lock Check}} {{Target = [[@{lock_score}]]}} {{Roll=[[1d100]]}}">
+                    </button>
+                    Pick Lock:
+                </td>
+                <td><input type="number" name="attr_lock_score" value="28"/>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="sheet-col">
+                <!-- Content for the second column -->
+        <br /><br />
+        <h3>Inventory</h3>
+            <tr>
+              <td>Cash: </td>
+              <td><input type="number" value="0" name="attr_cash" /></td>
+            </tr>
+        <fieldset class="repeating_inventory">
+            <input type="text" name="attr_itemname" />
+            <input type="text" name="attr_descrip" />
+        </fieldset>
+    </div>
+</div>
+<div class="sheet-1colrow">
+    <div class="sheet-col">
+                <!-- Content for the first column -->
+        <br /><br />
+        <table>
+        <!--This table contains classes and experience -->
+            <th><h3>Weapons</h3></th>
+            <tr class="sheet-headerrow">
+                <td>Roller</td>
+                <td>Name</td>
+                <td>Hit</td>
+                <td>Damage</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_weap1" value="&{template:default} {{name=Weapon 1}} {{Hit=[[1d20 + @{weap1_hit}]]}} {{Damage=[[@{weap1_dice}d@{weap1_dam}+@{weap1_mod}]]}}">
+                    </button>
+                </td>
+                <td><input type="text" name="attr_weapon1" /></td>
+                <td>
+                    <input type="number" name="attr_weap1_hit" value="0"/>
+                </td>
+                <td>
+                    <input type="number" name="attr_weap1_dice" value="0" />
+                </td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap1_dam" value="6" /></td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap1_mod" value="0" /></td>
+            </tr>
+                        <tr>
+                <td>
+                    <button type="roll" name="roll_weap2" value="&{template:default} {{name=Weapon 2}} {{Hit=[[1d20 + @{weap2_hit}]]}} {{Damage=[[@{weap2_dice}d@{weap2_dam}+@{weap2_mod}]]}}">
+                    </button>
+                </td>
+                <td><input type="text" name="attr_weapon2" /></td>
+                <td>
+                    <input type="number" name="attr_weap2_hit" value="0"/>
+                </td>
+                <td>
+                    <input type="number" name="attr_weap2_dice" value="0" />
+                </td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap2_dam" value="6" /></td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap2_mod" value="0" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="roll" name="roll_weap3" value="&{template:default} {{name=Weapon 3 w 5-shot Burst}} {{Hit roll 1=[[1d20 + @{weap3_hit}]]}} {{Damage1=[[@{weap3_dice}d@{weap3_dam}+@{weap3_mod}]]}} {{Hit roll 2=[[1d20 + @{weap3_hit}]]}} {{Damage2=[[@{weap3_dice}d@{weap3_dam}+@{weap3_mod}]]}} {{Hit roll 3=[[1d20 + @{weap3_hit}]]}} {{Damage3=[[@{weap3_dice}d@{weap3_dam}+@{weap3_mod}]]}} {{Hit roll 4=[[1d20 + @{weap3_hit}]]}} {{Damage4=[[@{weap3_dice}d@{weap3_dam}+@{weap3_mod}]]}} {{Hit roll 5=[[1d20 + @{weap3_hit}]]}} {{Damage5=[[@{weap3_dice}d@{weap3_dam}+@{weap3_mod}]]}}">
+                    </button>
+                </td>
+                <td><input type="text" name="attr_weapon3" /></td>
+                <td>
+                    <input type="number" name="attr_weap3_hit" value="0"/>
+                </td>
+                <td>
+                    <input type="number" name="attr_weap3_dice" value="0" />
+                </td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap3_dam" value="6" /></td>
+                <td>d</td>
+                <td>
+                    <input type="number" name="attr_weap3_mod" value="0" /></td>
+                <td> Five-shot burst weapon </td>
+                <td>
+            </tr>
+        </table>
+    </div>
+</div>
